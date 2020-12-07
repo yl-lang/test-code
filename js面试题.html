@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js面试题</title>
+</head>
+
+<body>
+    <script>
+        function Foo() {
+            getName = function () {
+                alert("1")
+            }
+            return this;
+        }
+        Foo.getName = function () {
+            alert('2')
+        }
+        Foo.prototype.getName = function () {
+            alert("3")
+        }
+        var getName = function () {
+            alert("4")
+        }
+        function getName() {
+            alert("5")
+        }
+
+
+        // 存在变量和函数的提升
+        // function Foo() {
+        //     getName = function () {
+        //         alert("1")
+        //     }
+        //     return this;
+        // }
+        // var getName
+        // function getName() {
+        //    alert("5")
+        // }
+
+
+        // Foo.getName = function () {
+        //     alert('2')
+        // }
+        // Foo.prototype.getName = function () {
+        //     alert("3")
+        // }
+        // getName = function () {
+        //         alert("1")
+        // }
+
+
+
+
+
+
+
+
+
+        //请写出下列输出的结果
+        Foo.getName();  //2
+        getName(); //4
+        Foo().getName();//window.getName()  1
+        getName(); //1
+        new Foo.getName(); //2
+        new Foo().getName();//foo.getName()  实例里面没有，去隐式原型里面找=构造函数的显示原型  3
+        new new Foo().getName(); //3
+    </script>
+</body>
+
+</html>

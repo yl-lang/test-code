@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建xmlhttpRequest对象</title>
+</head>
+<body>
+    <script>
+        // 封装通用的xhr对象，兼容各个浏览器版本
+        function craeteXHR(){
+            //判断浏览器是否将XHLHttpRequest作为本地对象实现
+           var xmlhttp
+           if(window.XMLHttpRequest) {
+               //IE7+, Firefox,Chrome,Opera,Safari
+               xmlhttp=new XMLHttpRequest() 
+           }
+           else{
+               //IE6,IE5
+               xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")
+           }
+        }
+        // 创建XMLHttpRequest对象
+         var xhr=craeteXHR(),data=null
+         //创建响应XMLHttpRequest对象状态变化的函数，onreadystatechange在readyState属性发生改变时触发
+         xhr.onreadystatechange=function(){
+            //  异步调用成功，响应内容解析完成，可以在客户端调用
+            if(xhr.readyState===4){
+                if((xhr.status>=200&&xhr.status<300)||xhr.status===304){
+                     //获得服务器返回的数据
+                    data=JSON.parse(xhr.responseText)
+                    //渲染数据到页面中
+                    renderDataToDom()
+                }
+               
+            }
+         }
+         //创建请求
+         xhr.open('get','./server/slider.json',true)
+        //  发送请求
+        xhr.send(null)
+        // xhr.send({user:"zahngsan",id:6})
+        // 设置http头部信息
+        // xhr.setRequestHeader("Content-type","application/x-www-from-urlencoded")
+    </script>
+</body>
+</html>

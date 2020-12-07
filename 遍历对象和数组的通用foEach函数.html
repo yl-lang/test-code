@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装一个forEach函数</title>
+</head>
+<body>
+    <script>
+        function forEach(obj,fn){
+            var key
+            if(obj instanceof Array){
+               obj.forEach(function(item,index){
+                   fn(index,item)
+               })
+            }
+            else{
+                for(key in obj){
+                    if(obj.hasOwnProperty(key)){
+                        console.log(key,obj[key])
+                    }
+                }
+            }
+        }
+        var arr=[1,2,3]
+        forEach(arr,function(index,item){
+            console.log(index,item)
+        })
+        var obj={
+            name:'xiaoxiao',
+            age:18
+        }
+        forEach(obj,function(key,value){
+            console.log(key,value)
+        })
+    </script>
+</body>
+</html>

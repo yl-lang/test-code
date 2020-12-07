@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归</title>
+</head>
+<body>
+    <script>
+         let data = {
+                "name": "jack",
+                "child": [
+                    {
+                        "name": "jack1"
+                    },
+                    {
+                        "name": "jack2",
+                        "child": [
+                            {
+                                "name": "jack2-1",
+                                "child": [
+                                    {
+                                    "name": "jack2-1-1"
+                                },
+                                {
+                                        "name": "jack2-1-2"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "jack2-2"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "jack3",
+                        "child": [
+                            {
+                                "name": "jack3-1"
+                            },
+                            {
+                                "name": "jack3-2"
+                            }
+                        ]
+                    }
+                ]
+            } 
+
+            
+            function getname(data){
+                if(data.child.length > 1){
+                    console.log(data.name);
+                }
+                for(var i = 0; i < data.child.length; i++){
+                    if(data.child[i].child != undefined){
+                        getname(data.child[i]);
+                    }
+                }
+                
+                
+            }
+
+            getname(data);
+            // console.log(data.child.length);
+
+            // function getnames(name){
+            //      if (data.child.length > 1) {
+            //         console.log(data.name)
+            //      }
+            // }
+    </script>
+</body>
+</html>

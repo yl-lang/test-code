@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端1物理像素问题</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box {
+            width:0.5rem;
+            height:0.5rem;
+            border-bottom:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 像素比=物理像素/css像素
+        var dpr= window.devicePixelRatio;
+        console.log(dpr)
+        //缩放比例
+        var scale = 1/dpr;
+        // 获取meta标签
+        var metaNode = document.querySelector('meta[name="viewport"]')
+        metaNode.setAttribute('content','width=device-width, initial-scale='+scale+'')
+        // 获取html
+        var htmlNode = document.querySelector('html')
+        //获取屏幕区的宽
+        var width=document.documentElement.clientWidth;
+        console.log(width)
+        htmlNode.style.fontSize=width*dpr+"px"
+    </script>
+</body>
+</html>

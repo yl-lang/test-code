@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="firstname" v-model="firstname">
+        <input type="text" placeholder="lastname" v-model="lastname">
+        <input type="text" v-model="totalname">
+         <input type="text" v-model="totalname">
+        <input type="text" v-model="totalname">
+        <input type="text" v-model="name">
+        <input type="text" v-model="name">
+        <input type="text" v-model="name">
+    </div>
+        <script>
+            var vm = new Vue({
+                el:"div",
+                data:{
+                    firstname:'yu',
+                    lastname:'ling',
+                    list:[]
+                },
+                computed:{
+                    // 回调函数：1.你定义的2.你没有调用3.但最终执行了
+                    // 什么时候执行：初始化的时候，相关data属性数据发生改变的时候
+                   //用来做什么：计算并返回当前属性的值    
+                    totalname(){
+                        console.log('aaaa')
+                        return this.firstname+this.lastname
+                    },
+                
+                   name: {
+                    // 回调函数，当需要读取当前属性值时回调，根据相关的数据计算并返回当前属性的值
+                    get(){
+                        console.log("bbb")
+                        return this.firstname+" "+this.lastname
+                    },
+                    // 回调函数，监视当前属性值的变化，当属性值改变时回调，更新相关的属性数据
+                    set(value){
+                        const names=value.split(' ');
+                        this.firstname=names[0];
+                        this.lastname=names[1];
+
+                    }
+                }
+                },
+            })
+        </script>
+  
+</body>
+</html>

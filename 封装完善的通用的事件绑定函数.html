@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完善的事件绑定函数</title>
+</head>
+<body>
+    <div id="div1">
+        <a href="#" id="a1">a1</a>
+        <a href="#">a2</a>
+        <a href="#">a3</a>
+        <a href="#">a4</a>
+        <a href="#">a5</a>
+    </div>
+    <p id="p">aaa</p>
+    <script>
+        function bindevent(elem,type,selector,fn){
+            if(fn==null)
+            fn=selector
+            selector=null
+            elem.addEventListener(type,function(e){
+                var target
+                if(selector){
+                    //有代理
+                    target=e.target
+                    if(target.matches(selector)){
+                        fn.call(target,e)
+                    }
+                }
+                else{
+                    //没有代理
+                    fn(e)
+                }
+            })
+        }
+
+        let odiv1=document.getElementById('div1')
+        bindevent(odiv1,'click','a',function(e){
+            e.preventDefault()
+            console.log(this.innerHTML)
+        })
+        let op=document.getElementById('p')
+        bindevent(op,'click',function(e){
+            console.log(op.innerHTML)
+        })
+    </script>
+</body>
+</html>

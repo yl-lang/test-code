@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装一个通用的事件监听函数</title>
+</head>
+<body>
+    <div id="box">点我点我点我</div>
+    <script>
+        function bind(ele,type,fn){
+            ele.addEventListener(type,fn)
+        }
+        let obox=document.getElementById("box")
+        bind(obox,'click',function(e){
+            e.preventDefault() //阻止默认行为
+            alert('clicked')
+        })
+       
+    </script>
+</body>
+</html>

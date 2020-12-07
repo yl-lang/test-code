@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="dome">
+        <ul>
+            <li v-for="(item,index) in person" :key="index">
+               {{index}}----{{item.name}}---{{item.age}}
+            <button @click="delectP(index)">删除</button>
+            <button @click="updateP(index,{name:'Cat',age:18})">更新</button>
+            </li>
+           
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#dome",
+            data:{
+                // vue本身只监视person的改变，person里面存的是地址，没有监视数组内部数据的变化
+                person:[
+                    {name:"coco",age:18},
+                    {name:"dodo",age:19},
+                    {name:"aoao",age:20},
+                    {name:"eeee",age:21}
+                ]
+            },
+            methods:{
+                delectP(index){
+                    // vue重写了数组中一系列改变数组内部数据的方法（先调用原生，在更新界面）--->数组内部改变，界面自动变化
+                    this.person.splice(index,1)
+                },
+                updateP(index,newp){
+                    // 并没有改变person本身，数组内部发生了变化，但没有调用变异方法，vue不会更新界面
+                    // this.person[index]=newp
+                    // this.person=[]
+                    this.person.splice(index,1,newp)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

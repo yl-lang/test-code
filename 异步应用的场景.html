@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步应用的场景</title>
+</head>
+<body>
+    <div id="btn">111</div>
+    <script>
+        // 1.定时任务
+        // console.log(100)
+        // setTimeout(function(){
+        //     console.log(200)
+        // },1000)
+        // console.log(300)
+        // 同步的场景
+        // cxc
+        // console.log(300)
+
+
+
+        // 2.网络请求(ajax请求，动态img加载)
+        // console.log('start')
+        // var img=document.createElement('img')
+        // img.onload=function() {
+        //     console.log('onload')
+        // }
+        // img.src='img/002.jpg'
+        // console.log('end')
+
+
+        // 3.事件绑定
+        console.log('start')
+        var obtn=document.getElementById('btn')
+        obtn.addEventListener('click',function(){
+            console.log('clicked')
+        })
+        console.log('end')
+    </script>
+</body>
+</html>

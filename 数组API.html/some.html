@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>some判断是否有至少一个元素符合条件</title>
+</head>
+<body>
+    <script>
+        var arr=[1,2,3]
+        var result=arr.some(function(item,index){
+            if(item<2){
+                return true
+            }
+        })
+        console.log(result)
+    </script>
+</body>
+</html>

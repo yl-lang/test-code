@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输出指定日期函数</title>
+</head>
+<body>
+    <script>
+        function formatdate(dt) {
+            if(!dt){
+                dt = new Date()
+            }
+           
+            var year =dt.getFullYear()
+            var month=dt.getMonth()+1
+            var today=dt.getDate()
+            if(month<10){
+                month='0'+month
+            }
+            if(today<10){
+                today='0'+today
+            }
+            return year +"—"+month +"—"+today
+        }
+         var time = new Date()
+         var formatdate=formatdate(time)
+         console.log(formatdate)
+    </script>
+</body>
+</html>

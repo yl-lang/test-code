@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='s1'>s1
+        <div id='s2'>s2</div>
+    </div>
+    
+    <script>
+
+        s1.addEventListener('click', function (e) {
+
+            console.log('1');
+
+        });
+        
+        s2.addEventListener('click', function (e) {
+
+            console.log('2');
+
+        });
+
+        s1.addEventListener('click', function (e) {
+
+            console.log('3');
+
+        }, true);
+         s2.addEventListener('click', function (e) {
+
+                console.log('4');
+
+            }, true);
+    // 其他元素捕获阶段事件 -> 本元素代码顺序事件 -> 其他元素冒泡阶段事件 。
+
+       
+//3241
+    </script>
+</body>
+</html>

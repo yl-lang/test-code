@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text,password, radio,checkbox,textarea,select</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+     <form action="/xxx" @submit.prevent="aa">
+        <span>姓名：</span>
+        <input type="text" v-model="name" value="yuling"><br/>
+        <span>密码：</span>
+        <input type="password" v-model="pas" value="1234"><br/>
+        <span>性别：</span>
+        <input type="radio" id="0" value="男" v-model="sex">
+        <label for="0">男</label>
+        <input type="radio" id="1" value="女" v-model="sex">
+        <label for="1">女</label><br>
+        <span>爱好：</span>
+        <input type="checkbox" id="backet" value="backet" v-model="aihao">
+        <label for="basket">篮球</label>
+        <input type="checkbox" id="footer" value="footer" v-model="aihao">
+        <label for="footer">足球</label>
+        <input type="checkbox" id="ping" value="ping" v-model="aihao">
+        <label for="ping">乒乓球</label><br/>
+        <span>城市：</span>
+        <select name="" id="" v-model="cityid">
+            <option value="">请选择</option>
+            <option :value="item.id" v-for="(item,index) in city">{{item.name}}</option>
+        </select><br/>
+        <textarea name="" id="" cols="30" rows="10" v-model="xinwen" ></textarea><br/>
+        <input type="submit" value="注册">
+    </form>
+    </div>
+    <script>
+        new Vue({
+            el:"#box",
+            data:{
+                name:'',
+                pas:'',
+                sex:'男',
+                aihao:["footer"],
+                city:[{id:0,name:'sj'},{id:1,name:'be'}],
+                cityid:1,
+                xinwen:'aaaaaaaa'
+            },
+            methods:{
+                aa(){
+                  console.log(this.name,this.pas,this.sex,this.aihao,this.city)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

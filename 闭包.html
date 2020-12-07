@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包的应用场景</title>
+</head>
+
+<body>
+    <script>
+        // 1.函数作为返回值
+        function f1() {
+            var a = 100
+            function f2() {
+                ++a
+                console.log(a) //当前函数作用域没有定义变量a,会去函数定义的父级作用域里去寻找
+            }
+            return f2
+        }
+        var f = f1()
+        f()  //101
+        f() //102
+        // 2.函数作为参数来传递
+        // function f1() {
+        //     var a = 100
+        //     return function () {
+        //         console.log(a) //当前函数作用域没有定义变量a,会去函数定义的父级作用域里去寻找
+        //     }
+        // }
+        // var f = f1()
+        // function f2(fn) {
+        //     var a=3002
+        //     fn()
+        // }
+        // f2(f)  //100
+
+    </script>
+</body>
+
+</html>

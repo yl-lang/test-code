@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域，作用域链</title>
+</head>
+
+<body>
+    <script>
+        // 没有块级作用域
+        // if(true) {
+        //     var name = 'zhangsan' 
+        // }
+        // {}不能对变量进行约束，相当于在全局作用域里声明变量，在哪里都可以调用，
+        // console.log(name)
+        // 推荐在{}外部声明变量
+        // var name
+        // if (true) {
+        //     name = 'zhangsan'
+        // }
+        // console.log(name)
+
+
+        var i, a
+        for (i = 0; i < 10; i++) {
+            (function (i) {
+                var a = document.createElement('a')
+                a.innerHTML = i
+                a.addEventListener('click', function (e) {
+                    e.preventDefault()
+                    alert(i)
+                })
+                document.body.appendChild(a)
+            })(i)
+
+        }
+    </script>
+</body>
+
+</html>

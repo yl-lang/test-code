@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表搜索和排序</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="searchname">
+        <ul>
+            <li v-for="(item,index) in filterperson" :key="index">
+                {{index}}----{{item.name}}----{{item.age}}
+            </li>
+            <button @click="orderFun(1)">年龄升序</button>
+            <button @click="orderFun(2)">年龄降序</button>
+            <button @click="orderFun(0)">原本顺序</button>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#box",
+            data:{
+                // 1是升序，二是降序，0是原本顺序
+                order:0,
+                searchname: '',
+                persons:[
+                    {name:'xiaoming',age:18},
+                    {name:"xiaohua",age:19},
+                    {name:"coco",age:20},
+                    {name:"ddd",age:23}
+                ]
+            },
+            computed:{
+                // 在页面初始化的时候执行，还有相关数据改变的时候执行。
+                filterperson(){
+                    // 取出相关数据
+                    const {searchname,persons,order}=this
+                    // 对persons进行过滤
+                    let filterp=persons.filter(p=>p.name.indexOf(searchname)!==-1)
+                    if (order !== 0) {
+                        filterp.sort(function(p1,p2){ //如果返回负数p1在前，返回正数p2在前
+                        // 1代表升序，2代表降序
+                        if(order===2){
+                            return p2.age-p1.age
+
+                        }
+                        else{
+                            return p1.age-p2.age
+                        }
+
+                        })
+                    }
+                    return filterp;
+                }
+               
+                
+            },
+             methods: {
+                orderFun(order) {
+                    this.order = order;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

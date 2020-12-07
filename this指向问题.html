@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this只有在执行时才能确定值</title>
+</head>
+<body>
+   <script>
+    // 构造函数的this
+    function Foo(name) {
+        this.name=name
+    }
+    var f = new Foo('zhangsan')
+    f.name
+
+    // 作为对象的一个属性
+    var obj = {
+        name: 'A',
+        printName: function() {
+            console.log(this.name)
+        }
+    }
+    obj.printName()
+
+    // 普通函数的this
+    function fn() {
+        console.log(this)
+    }
+    fn() //window
+
+    // call apply  bind 都可以改变this的指向
+    function fn1(name,age) {
+        alert(name)
+        console.log(this) 
+    }
+    fn1.call({x: 100},'zhangsan',20)
+    fn1.apply({x: 200},['zhangsan',20])
+
+    var fn2=function(name,age) {
+        alert(name)
+        console.log(this) 
+    }.bind({y:300})
+    fn2('zhangsan',22)
+   </script>
+</body>
+</html>

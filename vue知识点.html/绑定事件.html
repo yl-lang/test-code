@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定监听</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!-- 传参的时候还可以传递额外的参数 -->
+    <button @click="test1($event,1,2,3)" >1111</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#box",
+            data:{
+                test1(event,one,two,three){
+                    console.log(event,one,two,three)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生js操作dom</title>
+</head>
+<body>
+    <div id="box">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <p id="content">段落</p>
+    </div>
+    <script type="text/javascript">
+        var obox=document.getElementById('content').parentNode.children;
+        console.log(obox)
+    
+    </script>
+</body>
+</html>

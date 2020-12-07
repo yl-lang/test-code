@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件冒泡</title>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">确定</p>
+        <p id="p2">取消</p>
+        <p id="p3">取消</p>
+    </div>
+    <div id="div2">
+        <p id="p4">取消</p>
+        <p id="p5">取消</p>
+    </div>
+
+    <script>
+        function bindevent(ele,type,fn){
+            ele.addEventListener(type,fn)
+        }
+        let op1=document.getElementById('p1')
+        bindevent(op1,'click',function(e){
+            // e.stopPropagation()  //阻止事件冒泡
+            alert("确定")
+        })
+        let obody=document.body
+        bindevent(obody,'click',function(){
+            alert('取消')
+        })
+
+    </script>
+</body>
+</html>

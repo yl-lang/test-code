@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去掉数组中重复的数据</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var arr = [1,2,3,4,2,3,1];
+        var t = [];
+        t[0] = arr[0];
+        for(var i=0;i<arr.length;i++){
+            for(var k=0;k<t.length;k++){
+                if(t[k] == arr[i]){
+                    break;
+                }
+                else if(k == t.length-1){
+                    t.push(arr[i]);
+                }
+            }
+        }
+        console.log(t)
+
+
+    </script>
+</body>
+</html>

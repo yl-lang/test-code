@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装JSONP</title>
+</head>
+<body>
+    <script>
+        function  getJSONP(url,callback) {
+            if(!url) {
+                
+                return;
+            }
+            //声明数组来随机生成函数名
+            var a=['a','b','c','d','e','f','g','i','h','j'],
+                r1=Math.floor(Math.random()*10),
+                r2=Math.floor(Math.random()*10),
+                r3=Math.floor(Math.random()*10),
+                name="getJSONP"+a[r1]+a[r2]+a[r3],
+                cbname="getJSONP."+name //必须加上getJSONP.,因为服务器返回的函数要作为getJSONP的属性
+            //判断url地址中是否有问号
+            if(url.indexOf('?') === -1){
+                url += '?jsonp='+cbname  //''里的叫什么都可以
+            }
+            else{
+                url += '&jsonp='+cbname
+            }
+            //动态创建script标签
+            var oscript=document.createElement('script')
+            //定义被脚本执行的回调函数
+            getJSONP[name]=function(data){
+                try{
+                    callback&&callback(data)
+                }catch(e){
+
+                }
+                finally{
+                    //最后删除该函数以及script标签
+                    delete getJSONP[name]
+                    oscript.parentNode.removeChild(oscript)
+
+                }
+            }
+            oscript.src=url
+            document.getElementsByTagName('head')[0].appendChild(oscript)
+        }
+
+       // http://www.baidu.com?jsonp=getJSONP.getJSONPigi
+       //getJSONP.getJSONPigi(JSON) //JSON是服务器返回给我们的数据
+
+        getJSONP('http://class.imooc.com/api/jsonp',function(data){
+            console.log(data)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取随机数的长度一致</title>
+</head>
+<body>
+    <script>
+        var number= Math.random()
+        number=number+"0000000000" //获取的随机数后面加10个0，强制转换成字符串类型
+         number=number.slice(0,10)
+        console.log(number)
+
+
+    </script>
+</body>
+</html>

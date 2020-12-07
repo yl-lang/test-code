@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位问题</title>
+    <style>
+        *{
+            margin:0;
+            padding:0
+        }
+       html {
+           border: 1px solid black;
+           margin:20px;
+       }
+       body {
+          height:2000px;
+          margin:20px;
+          border:1px solid red
+        }
+        #div1{
+            font-size: 30px;
+            width:5em;
+            border:1px solid yellow;
+            height:2em;
+        }
+        #content {
+            position: absolute;
+            width:50px;
+            height:50px;
+            left:0px;
+          
+            bottom:0px;
+            font-size:1em;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">666
+        <div id="content">111</div>
+    </div>
+    <script>
+        var a=document.body.offsetHeight;
+        var b = document.body.offsetWidth;
+        var c= document.getElementById('div1').offsetHeight
+        console.log(c)
+    </script>
+</body>
+</html>
